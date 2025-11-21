@@ -1,13 +1,12 @@
 "use client";
 export const dynamic = "force-static";
-
+import Grid from "@mui/material/GridLegacy";
 import {
   Box,
   Button,
   Card,
   CardContent,
   Container,
-  Grid,
   Stack,
   TextField,
   Typography,
