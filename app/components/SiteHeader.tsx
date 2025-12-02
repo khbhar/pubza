@@ -87,10 +87,10 @@ export default function SiteHeader() {
   const isDark = mode === "dark";
 
   return (
-    <header className="bg-[var(--surface)]/90 backdrop-blur-md text-[var(--text-primary)] border-b border-[var(--border-soft)]">
+    <header className="bg-[var(--surface)]/90 backdrop-blur-md text-[var(--text-primary)] border-b border-[var(--border-soft)] pb-2">
       <Container
         maxWidth="lg"
-        className="grid gap-2 sm:gap-4 px-2 sm:px-4 py-1 grid-cols-[1fr_auto_1fr] items-center"
+        className="grid gap-2 sm:gap-4 px-2 sm:px-4 py-0 grid-cols-[1fr_auto_1fr] items-center"
       >
         <Stack direction="row" spacing={1} padding={0} alignItems="center">
           <Button
@@ -148,8 +148,8 @@ export default function SiteHeader() {
         </Stack>
       </Container>
 
-      <Container maxWidth="lg" className="px-1! py-1">
-        <Stack direction="row" spacing={0} justifyContent="center" flexWrap="wrap" gap={0}>
+      <Container maxWidth="lg" className="px-1! py-0">
+        <Stack direction="row" spacing={0} justifyContent="center" flexWrap="wrap" gap={1}>
           {navLinks.map((link) => (
             <Button
               key={link.href}
@@ -169,7 +169,7 @@ export default function SiteHeader() {
                     ? "primary"
                     : "inherit"
               }
-              className="text-[10px]! font-light! sm:text-base! py-1! sm:px-2! px-1!"
+              className="text-[11px]! font-light! sm:text-base! py-1! sm:px-2! px-1!"
               aria-current={
                 link.href === "/"
                   ? pathname === "/" ? "page" : undefined

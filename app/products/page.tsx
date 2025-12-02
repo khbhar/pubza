@@ -100,7 +100,7 @@ export default function ProductsPage() {
                       sizes="(max-width: 768px) 100vw, 380px"
                     />
                   </Box>
-                    <Stack spacing={1.5} className="flex-1">
+                    <Stack spacing={1.5} className="flex-1 !py-1">
                       <Typography variant="h6">{item.title}</Typography>
                       <Typography className="text-[var(--text-secondary)]">{item.detail}</Typography>
                       <Stack direction="row" spacing={1} flexWrap="wrap">
