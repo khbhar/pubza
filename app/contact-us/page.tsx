@@ -12,9 +12,71 @@ import {
   Typography,
   Chip,
 } from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
 import { EmailRounded, PhoneInTalkRounded } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 export default function ContactPage() {
+  const searchParams = useSearchParams();
+  const topics = [
+    { value: "vehicules", label: "Véhicules" },
+    { value: "enseignes", label: "Enseignes & vitrines" },
+    { value: "signaletique", label: "Signalétique" },
+    { value: "print", label: "Print rapide" },
+    { value: "graphisme", label: "Graphisme & identité" },
+    { value: "digital", label: "Sites web & digitaux" },
+    { value: "textile", label: "Objets & textiles" },
+    { value: "autre", label: "Autre" },
+  ];
+
+  const topicParam = searchParams.get("topic");
+  const topicValues = topics.map((t) => t.value);
+  const initialTopic =
+    topicParam && topicValues.includes(topicParam) ? topicParam : topics[0].value;
+
+  const makeInitialForm = (topicValue: string) => ({
+    name: "",
+    email: "",
+    phone: "",
+    project: "",
+    topic: topicValue,
+  });
+
+  const [form, setForm] = useState(() => makeInitialForm(initialTopic));
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  // Keep topic in sync when navigating with a new ?topic=.
+  useEffect(() => {
+    setForm((prev) => ({ ...prev, topic: initialTopic }));
+  }, [initialTopic]);
+
+  const handleChange = (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const handleSubmit = async () => {
+    setStatus("sending");
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data?.error || "Erreur lors de l’envoi");
+      }
+      setStatus("sent");
+      setForm(makeInitialForm(initialTopic));
+    } catch (err: any) {
+      setStatus("error");
+      setError(err?.message || "Erreur lors de l’envoi");
+    }
+  };
+
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--text-primary)]">
       <Box className="bg-[var(--surface-muted)]/90 border-b border-[var(--border-soft)]">
@@ -36,13 +98,72 @@ export default function ContactPage() {
           <Grid item xs={12} md={6}>
             <Card className="bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-soft)]">
               <CardContent className="space-y-3">
-                <TextField fullWidth label="Nom / Entreprise" variant="filled" />
-                <TextField fullWidth label="Email" variant="filled" />
-                <TextField fullWidth label="Téléphone" variant="filled" />
-                <TextField fullWidth label="Projet" variant="filled" multiline minRows={3} />
-                <Button variant="contained" color="primary">
-                  Envoyer
+                <TextField
+                  fullWidth
+                  label="Nom / Entreprise"
+                  variant="filled"
+                  value={form.name}
+                  onChange={handleChange("name")}
+                  required
+                />
+                <TextField
+                  fullWidth
+                  label="Email"
+                  type="email"
+                  variant="filled"
+                  value={form.email}
+                  onChange={handleChange("email")}
+                  required
+                />
+                <TextField
+                  fullWidth
+                  label="Téléphone"
+                  variant="filled"
+                  value={form.phone}
+                  onChange={handleChange("phone")}
+                />
+                <TextField
+                  fullWidth
+                  label="Projet"
+                  variant="filled"
+                  multiline
+                  minRows={3}
+                  value={form.project}
+                  onChange={handleChange("project")}
+                  required
+                />
+                <TextField
+                  select
+                  fullWidth
+                  label="Sujet"
+                  variant="filled"
+                  value={form.topic}
+                  onChange={handleChange("topic")}
+                >
+                  {topics.map((topic) => (
+                    <MenuItem key={topic.value} value={topic.value}>
+                      {topic.label}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={status === "sending"}
+                  onClick={handleSubmit}
+                >
+                  {status === "sending" ? "Envoi..." : status === "sent" ? "Envoyé" : "Envoyer"}
                 </Button>
+                {error && (
+                  <Typography variant="body2" className="text-red-500">
+                    {error}
+                  </Typography>
+                )}
+                {status === "sent" && !error && (
+                  <Typography variant="body2" className="text-[var(--text-secondary)]">
+                    Message envoyé. Nous revenons vers vous rapidement.
+                  </Typography>
+                )}
               </CardContent>
             </Card>
           </Grid>

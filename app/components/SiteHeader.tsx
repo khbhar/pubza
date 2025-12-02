@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { EmailRounded, PhoneInTalkRounded } from "@mui/icons-material";
+import Image from "next/image";
 import { useThemeMode } from "../ThemeRegistry";
 
 const navLinks = [
@@ -60,12 +61,14 @@ export default function SiteHeader() {
         </Stack>
 
         <Box className="flex items-center justify-center sm:justify-self-center">
-          <Typography
-            variant="h5"
-            className="rounded-full bg-[var(--surface-contrast)] px-5 py-2 font-black tracking-tight text-[var(--text-contrast)] shadow-lg"
-          >
-            PUBZA
-          </Typography>
+          <Image
+            src="/imgs/logo/logo-white.png"
+            alt="PUBZA logo"
+            width={220}
+            height={200}
+            className="h-16 w-18 drop-shadow"
+            priority
+          />
         </Box>
 
         <Stack
@@ -87,8 +90,8 @@ export default function SiteHeader() {
         </Stack>
       </Container>
 
-      <Container maxWidth="lg" className="px-4 py-1">
-        <Stack direction="row" spacing={1} justifyContent="center" flexWrap="wrap" gap={1}>
+      <Container maxWidth="lg" className="px-2 py-1">
+        <Stack direction="row" spacing={0} justifyContent="center" flexWrap="wrap" gap={0}>
           {navLinks.map((link) => (
             <Button
               key={link.href}
@@ -108,7 +111,7 @@ export default function SiteHeader() {
                     ? "primary"
                     : "inherit"
               }
-              className="text-sm font-semibold"
+              className="text-sm py-1! px-2!"
               aria-current={
                 link.href === "/"
                   ? pathname === "/" ? "page" : undefined

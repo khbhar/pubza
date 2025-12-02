@@ -36,6 +36,27 @@ export default function AboutPage() {
             </Typography>
           </CardContent>
         </Card>
+
+        <Card className="mt-6 bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-soft)]">
+          <CardContent className="space-y-3">
+            <Typography variant="h6">Nous trouver</Typography>
+            <Typography className="text-[var(--text-secondary)]">
+              123 Placeholder Street, Brussels — remplacez par l’adresse finale avant mise en ligne.
+            </Typography>
+            <Box className="rounded-lg overflow-hidden border border-[var(--border-soft)] shadow-sm">
+              <Box className="relative" sx={{ paddingBottom: "56.25%", height: 0 }}>
+                <iframe
+                  title="PUBZA placeholder map"
+                  src="https://www.google.com/maps?q=123+Placeholder+Street,+Brussels&output=embed"
+                  style={{ border: 0, position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </Box>
+            </Box>
+          </CardContent>
+        </Card>
       </Container>
     </main>
   );

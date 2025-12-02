@@ -27,6 +27,7 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/GridLegacy";
 import Image from "next/image";
+import Link from "next/link";
 import { brandPalette } from "./theme";
 
 const serviceTags = [
@@ -47,6 +48,7 @@ const services = [
     icon: DirectionsCarFilledRounded,
     accent: brandPalette.blue,
     features: ["Pose sur site", "Vinyle longue durée", "Design sur mesure"],
+    anchor: "vehicules",
   },
   {
     title: "Enseignes, totems & vitrines",
@@ -55,6 +57,7 @@ const services = [
     icon: StorefrontRounded,
     accent: brandPalette.yellow,
     features: ["LED & rétro-éclairage", "Gestion des permis", "Installation"],
+    anchor: "enseignes",
   },
   {
     title: "Signalétique & panneaux",
@@ -63,6 +66,7 @@ const services = [
     icon: PrintRounded,
     accent: brandPalette.magenta,
     features: ["Intérieur / extérieur", "Formats XL", "Finition pro"],
+    anchor: "signaletique",
   },
   {
     title: "Flyers, brochures & menus",
@@ -71,6 +75,7 @@ const services = [
     icon: FormatColorTextRounded,
     accent: brandPalette.blue,
     features: ["Papier premium", "Quantités flexibles", "Livraison locale"],
+    anchor: "print",
   },
   {
     title: "Graphisme & identité",
@@ -79,6 +84,7 @@ const services = [
     icon: BrushRounded,
     accent: brandPalette.yellow,
     features: ["Branding complet", "PAO prête à imprimer", "Conseil créatif"],
+    anchor: "graphisme",
   },
   {
     title: "Sites web & supports digitaux",
@@ -87,6 +93,7 @@ const services = [
     icon: LanguageRounded,
     accent: brandPalette.magenta,
     features: ["Responsive", "SEO local", "Animations"],
+    anchor: "digital",
   },
 ];
 
@@ -117,7 +124,7 @@ export default function Home() {
   return (
     <main className="max-w-screen min-h-screen bg-[var(--background)] text-[var(--text-primary)]">
       <Box className="relative overflow-hidden">
-        <Box className="absolute inset-0 bg-gradient-to-br from-[rgba(8,176,229,0.08)] via-transparent to-[rgba(229,18,104,0.12)]" />
+        <Box className="absolute inset-0 bg-gradient-to-br from-[rgba(8,176,229,0.09)] via-transparent to-[rgba(229,18,104,0.12)]" />
         <Container
           maxWidth="lg"
           className="relative z-10 px-4 py-14 sm:py-16 lg:py-20"
@@ -125,7 +132,7 @@ export default function Home() {
           <Box className="relative min-h-[240px] lg:min-h-[220px] group">
             <Box className="pointer-events-none absolute inset-y-0 right-[-8%] flex items-center justify-end h-[450px] sm:h-[650px] md:h-[550px] lg:h-[900px]">
               <Image
-                src="/imgs/car-pubza.png"
+                src="/imgs/car-pubza-exp.png"
                 alt="Covering véhicule PUBZA"
                 width={1280}
                 height={200}
@@ -216,6 +223,9 @@ export default function Home() {
         </Container>
       </Box>
 
+     <Box className="relative overflow-hidden">
+        <Box className="absolute inset-0 bg-gradient-to-bl to-[rgba(8,176,229,0.09)] via-transparent from-[rgba(229,18,104,0.12)] " />
+      
       <Container maxWidth="lg" className="px-4 pb-12 sm:pb-16">
         <Stack spacing={4}>
           <Box>
@@ -236,46 +246,7 @@ export default function Home() {
               />
             ))}
           </Box>
-           <Box className="relative z-10 mt-6 w-full max-w-xl lg:w-[40%]">
-              <Card className="bg-[var(--surface)] border border-[var(--border-soft)] shadow-xl">
-                <CardContent className="space-y-4">
-                  <Typography variant="h5" className="text-[var(--text-primary)]">
-                    La carte PUBZA
-                  </Typography>
-                  <Typography className="text-[var(--text-secondary)]">
-                    Un seul partenaire pour couvrir vos véhicules, vos enseignes,
-                    vos campagnes print et vos visuels digitaux.
-                  </Typography>
-                  <Divider className="border-[var(--border-soft)]" />
-                  <Stack spacing={2}>
-                    <Stack direction="row" spacing={2} alignItems="center">
-                      <PhoneInTalkRounded className="text-[var(--brand-yellow)]" />
-                      <div className="text-sm">
-                        <p className="text-[var(--text-secondary)]">Téléphone</p>
-                        <p className="text-[var(--text-primary)] text-lg font-semibold">
-                          04 66 30 72 08
-                        </p>
-                      </div>
-                    </Stack>
-                    <Stack direction="row" spacing={2} alignItems="center">
-                      <EmailRounded className="text-[var(--brand-blue)]" />
-                      <div className="text-sm">
-                        <p className="text-[var(--text-secondary)]">Email</p>
-                        <p className="text-[var(--text-primary)] text-lg font-semibold">
-                          CONTACT@PUBZA.BE
-                        </p>
-                      </div>
-                    </Stack>
-                  </Stack>
-                  <Divider className="border-[var(--border-soft)]" />
-                  <Stack direction="row" spacing={1.5} flexWrap="wrap">
-                    <Chip label="Facebook" variant="outlined" className="border-[var(--border-soft)] text-[var(--text-primary)]" />
-                    <Chip label="Instagram" variant="outlined" className="border-[var(--border-soft)] text-[var(--text-primary)]" />
-                    <Chip label="TikTok" variant="outlined" className="border-[var(--border-soft)] text-[var(--text-primary)]" />
-                  </Stack>
-                </CardContent>
-              </Card>
-            </Box>
+           
           <Grid container spacing={0} sx={{ overflowX: "clip" }}>
             {services.map((service) => {
               const Icon = service.icon;
@@ -312,6 +283,8 @@ export default function Home() {
                       <Divider className="border-[var(--border-soft)]" />
                       <Stack direction="row" spacing={2}>
                         <Button
+                          component={Link}
+                          href={`/contact-us?topic=${service.anchor ?? ""}`}
                           variant="contained"
                           color="primary"
                           size="small"
@@ -320,6 +293,8 @@ export default function Home() {
                           Demander un devis
                         </Button>
                         <Button
+                          component={Link}
+                          href={`/products#${service.anchor ?? ""}`}
                           variant="text"
                           color="inherit"
                           size="small"
@@ -336,7 +311,9 @@ export default function Home() {
           </Grid>
         </Stack>
       </Container>
-
+      </Box>
+<Box className="relative overflow-hidden">
+        <Box className="absolute inset-0 bg-gradient-to-br from-[rgba(8,176,229,0.09)] via-transparent to-[rgba(229,18,104,0.12)] " />
       <Container maxWidth="lg" className="px-4 pb-12 sm:pb-16">
         <Card className="bg-[var(--surface-contrast)] text-[var(--text-contrast)] border border-[var(--border-strong)]">
           <CardContent className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
@@ -345,7 +322,7 @@ export default function Home() {
                 label="Méthode PUBZA"
                 className="w-fit bg-[var(--brand-blue)] text-[var(--text-contrast)]"
               />
-              <Typography variant="h4" className="text-[var(--text-contrast)]">
+              <Typography variant="h4" className="text-[var(--text-primary)]">
                 De l’idée à la pose, sans friction.
               </Typography>
               <Typography className="text-[var(--text-muted)]">
@@ -396,15 +373,17 @@ export default function Home() {
           </CardContent>
         </Card>
       </Container>
-
+ </Box>
+ <Box className="relative overflow-hidden">
+        <Box className="absolute inset-0 bg-gradient-to-bl to-[rgba(8,176,229,0.09)] via-transparent from-[rgba(229,18,104,0.12)] " />
       <Container maxWidth="lg" className="px-4 pb-16">
         <Card className="bg-gradient-to-r from-[var(--brand-blue)] via-[var(--brand-yellow)] to-[var(--brand-magenta)] text-[var(--text-contrast)] border border-[var(--border-soft)]">
           <CardContent className="grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-center">
             <Stack spacing={1.5}>
-              <Typography variant="h4" className="text-[var(--text-contrast)]">
+              <Typography variant="h4" className="text-[var(--text-primary)]">
                 Prêt pour votre prochain support ?
               </Typography>
-              <Typography className="text-black/80">
+              <Typography className="text-[var(--text-secondary)]">
                 Flyers pour demain, covering pour votre flotte ou un site vitrine
                 pour votre campagne : on s’en occupe.
               </Typography>
@@ -446,7 +425,48 @@ export default function Home() {
             </Card>
           </CardContent>
         </Card>
+        <Box className="relative z-10 mt-6 w-full max-w-xl lg:w-[40%]">
+              <Card className="bg-[var(--surface)] border border-[var(--border-soft)] shadow-xl">
+                <CardContent className="space-y-4">
+                  <Typography variant="h5" className="text-[var(--text-primary)]">
+                    La carte PUBZA
+                  </Typography>
+                  <Typography className="text-[var(--text-secondary)]">
+                    Un seul partenaire pour couvrir vos véhicules, vos enseignes,
+                    vos campagnes print et vos visuels digitaux.
+                  </Typography>
+                  <Divider className="border-[var(--border-soft)]" />
+                  <Stack spacing={2}>
+                    <Stack direction="row" spacing={2} alignItems="center">
+                      <PhoneInTalkRounded className="text-[var(--brand-yellow)]" />
+                      <div className="text-sm">
+                        <p className="text-[var(--text-secondary)]">Téléphone</p>
+                        <p className="text-[var(--text-primary)] text-lg font-semibold">
+                          04 66 30 72 08
+                        </p>
+                      </div>
+                    </Stack>
+                    <Stack direction="row" spacing={2} alignItems="center">
+                      <EmailRounded className="text-[var(--brand-blue)]" />
+                      <div className="text-sm">
+                        <p className="text-[var(--text-secondary)]">Email</p>
+                        <p className="text-[var(--text-primary)] text-lg font-semibold">
+                          CONTACT@PUBZA.BE
+                        </p>
+                      </div>
+                    </Stack>
+                  </Stack>
+                  <Divider className="border-[var(--border-soft)]" />
+                  <Stack direction="row" spacing={1.5} flexWrap="wrap">
+                    <Chip label="Facebook" variant="outlined" className="border-[var(--border-soft)] text-[var(--text-primary)]" />
+                    <Chip label="Instagram" variant="outlined" className="border-[var(--border-soft)] text-[var(--text-primary)]" />
+                    <Chip label="TikTok" variant="outlined" className="border-[var(--border-soft)] text-[var(--text-primary)]" />
+                  </Stack>
+                </CardContent>
+              </Card>
+            </Box>
       </Container>
+       </Box>
     </main>
   );
 }

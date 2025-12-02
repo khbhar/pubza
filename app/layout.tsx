@@ -4,6 +4,7 @@ import "./globals.css";
 import ThemeRegistry from "./ThemeRegistry";
 import TopBanner from "./components/TopBanner";
 import SiteHeader from "./components/SiteHeader";
+import Footer from "./components/Footer";
 
 const heading = Barlow_Condensed({
   variable: "--font-heading",
@@ -39,6 +40,7 @@ export default function RootLayout({
           <TopBanner />
           <SiteHeader />
           {children}
+          <Footer />
         </ThemeRegistry>
       </body>
     </html>
