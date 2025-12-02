@@ -276,19 +276,19 @@ export default function Home() {
                             key={feature}
                             label={feature}
                             size="small"
-                            className="bg-[var(--chip-surface)] text-[var(--text-primary)]"
+                            className="bg-[var(--chip-surface)] text-[var(--text-primary)] text-[10px]! sm:text-xs! my-1!"
                           />
                         ))}
                       </Stack>
                       <Divider className="border-[var(--border-soft)]" />
-                      <Stack direction="row" spacing={2}>
+                      <Stack direction="row" spacing={2} alignItems="end" className="items-end! flex! justify-between!">
                         <Button
                           component={Link}
                           href={`/contact-us?topic=${service.anchor ?? ""}`}
                           variant="contained"
                           color="primary"
                           size="small"
-                          className="text-sm"
+                          className="text-xs! sm:text-sm! px-1! sm:px-2!"
                         >
                           Demander un devis
                         </Button>
@@ -296,7 +296,7 @@ export default function Home() {
                           component={Link}
                           href={`/products#${service.anchor ?? ""}`}
                           variant="text"
-                          color="inherit"
+                          color="secondary"
                           size="small"
                           className="text-sm text-[var(--text-secondary)]"
                         >
