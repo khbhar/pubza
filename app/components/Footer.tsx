@@ -65,14 +65,14 @@ export default function Footer() {
                   CONTACT@PUBZA.BE
                 </MuiLink>
               </Stack>
-              <Stack direction="row" spacing={1.5} alignItems="flex-start">
+              {/* <Stack direction="row" spacing={1.5} alignItems="flex-start">
                 <PlaceRounded fontSize="small" className="mt-0.5" />
                 <Typography className="text-[var(--text-secondary)]">
                   123 Placeholder Street
                   <br />
                   1000 Bruxelles
                 </Typography>
-              </Stack>
+              </Stack> */}
             </Stack>
           </Stack>
 

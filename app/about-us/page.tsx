@@ -37,7 +37,7 @@ export default function AboutPage() {
           </CardContent>
         </Card>
 
-        <Card className="mt-6 bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-soft)]">
+        {/* <Card className="mt-6 bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-soft)]">
           <CardContent className="space-y-3">
             <Typography variant="h6">Nous trouver</Typography>
             <Typography className="text-[var(--text-secondary)]">
@@ -56,7 +56,7 @@ export default function AboutPage() {
               </Box>
             </Box>
           </CardContent>
-        </Card>
+        </Card> */}
       </Container>
     </main>
   );

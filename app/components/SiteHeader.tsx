@@ -149,7 +149,7 @@ export default function SiteHeader() {
       </Container>
 
       <Container maxWidth="lg" className="px-1! py-0">
-        <Stack direction="row" spacing={0} justifyContent="center" flexWrap="wrap" gap={1}>
+        <Stack direction="row" spacing={0} justifyContent="center" flexWrap="wrap" gap={1 }>
           {navLinks.map((link) => (
             <Button
               key={link.href}
