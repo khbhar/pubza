@@ -132,7 +132,7 @@ export default function Home() {
           <Box className="relative min-h-[240px] lg:min-h-[220px] group">
             <Box className="pointer-events-none absolute inset-y-0 right-[-8%] flex items-center justify-end h-[450px] sm:h-[650px] md:h-[550px] lg:h-[900px]">
               <Image
-                src="/imgs/car-pubza-exp.png"
+                src="/imgs/car-pubza-model.png"
                 alt="Covering véhicule PUBZA"
                 width={1280}
                 height={200}
