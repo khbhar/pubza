@@ -130,13 +130,13 @@ export default function Home() {
           className="relative z-10 px-4 py-14 sm:py-16 lg:py-20"
         >
           <Box className="relative min-h-[240px] lg:min-h-[220px] group">
-            <Box className="pointer-events-none absolute inset-y-0 right-[-8%] flex items-center justify-end h-[450px] sm:h-[650px] md:h-[550px] lg:h-[900px]">
+            <Box className="pointer-events-none absolute inset-y-0 right-[-8%] flex items-center justify-end h-[350px] sm:h-[650px] md:h-[550px] lg:h-[700px]">
               <Image
                 src="/imgs/car-pubza-model.png"
                 alt="Covering véhicule PUBZA"
                 width={1280}
-                height={200}
-                className="w-[70%] max-w-[880px] sm:w-[60%] md:w-[70%] lg:w-[70%] object-contain drop-shadow-2xl transition duration-500 ease-out group-hover:scale-[1.03]"
+                height={500}
+                className="w-[70%] max-w-[880px] sm:w-[60%] md:w-[70%] lg:w-[80%] object-contain drop-shadow-2xl transition duration-500 ease-out group-hover:scale-[1.03]"
                 priority
               />
             </Box>
@@ -179,6 +179,9 @@ export default function Home() {
                 alignItems={{ xs: "stretch", sm: "center" }}
               >
                 <Button
+                  component="a"
+                  href="tel:+32466307208"
+                  aria-label="Appeler Pubza"
                   variant="contained"
                   color="primary"
                   size="large"
@@ -188,6 +191,9 @@ export default function Home() {
                   Devis & appel rapide
                 </Button>
                 <Button
+                  component="a"
+                  href="mailto:CONTACT@PUBZA.BE"
+                  aria-label="Envoyer un email à Pubza"
                   variant="outlined"
                   color="secondary"
                   size="large"
@@ -389,6 +395,9 @@ export default function Home() {
               </Typography>
               <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
                 <Button
+                  component="a"
+                  href="tel:+32466307208"
+                  aria-label="Appeler Pubza"
                   variant="contained"
                   color="inherit"
                   startIcon={<PhoneInTalkRounded />}
@@ -397,6 +406,9 @@ export default function Home() {
                   04 66 30 72 08
                 </Button>
                 <Button
+                  component="a"
+                  href="mailto:CONTACT@PUBZA.BE"
+                  aria-label="Envoyer un email à Pubza"
                   variant="outlined"
                   color="inherit"
                   startIcon={<EmailRounded />}

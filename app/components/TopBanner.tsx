@@ -24,7 +24,9 @@ export default function TopBanner() {
             aria-label="Facebook"
             className="text-white"
             component="a"
-            href="#"
+            href="https://www.facebook.com/pubza"
+            target="_blank"
+            rel="noreferrer"
           >
             <FacebookRounded fontSize="small" />
           </IconButton>
@@ -33,7 +35,9 @@ export default function TopBanner() {
             aria-label="Instagram"
             className="text-white"
             component="a"
-            href="#"
+            href="https://www.instagram.com/pubza.be/"
+            target="_blank"
+            rel="noreferrer"
           >
             <Instagram fontSize="small" />
           </IconButton>

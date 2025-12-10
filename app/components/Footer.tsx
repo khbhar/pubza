@@ -13,6 +13,7 @@ import {
   EmailRounded,
   PhoneInTalkRounded,
   PlaceRounded,
+  PointOfSale,
 } from "@mui/icons-material";
 
 const footerLinks = [
@@ -50,10 +51,10 @@ export default function Footer() {
               <Stack direction="row" spacing={1.5} alignItems="center">
                 <PhoneInTalkRounded fontSize="small" />
                 <MuiLink
-                  href="tel:0466307208"
+                  href="tel:+320466307208"
                   className="text-[var(--text-primary)] no-underline hover:text-[var(--brand-blue)]"
                 >
-                  0466 30 72 08
+                  +32 0466 30 72 08
                 </MuiLink>
               </Stack>
               <Stack direction="row" spacing={1.5} alignItems="center">
@@ -65,14 +66,12 @@ export default function Footer() {
                   CONTACT@PUBZA.BE
                 </MuiLink>
               </Stack>
-              {/* <Stack direction="row" spacing={1.5} alignItems="flex-start">
-                <PlaceRounded fontSize="small" className="mt-0.5" />
+              <Stack direction="row" spacing={1.5} alignItems="flex-start">
+                <PointOfSale fontSize="small" className="mt-0.5" />
                 <Typography className="text-[var(--text-secondary)]">
-                  123 Placeholder Street
-                  <br />
-                  1000 Bruxelles
+                  TVA : BE 0740.963.006
                 </Typography>
-              </Stack> */}
+              </Stack>
             </Stack>
           </Stack>
 

@@ -44,7 +44,7 @@ const productCategories = [
     detail:
       "Logos, chartes graphiques et maquettes prêtes à imprimer. Déclinaisons multi-supports, préparation fichiers de coupe et accompagnement pour garder une identité cohérente.",
     features: ["Branding complet", "PAO prête à imprimer", "Déclinaisons print"],
-    image: "/imgs/identity.png",
+    image: "/imgs/identity2.png",
   },
   {
     id: "digital",

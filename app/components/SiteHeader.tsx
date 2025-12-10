@@ -95,7 +95,7 @@ export default function SiteHeader() {
         <Stack direction="row" spacing={1} padding={0} alignItems="center">
           <Button
             component="a"
-            href="tel:0466307208"
+            href="tel:+320466307208"
             aria-label="Appeler"
             variant="outlined"
             color="secondary"
