@@ -155,7 +155,7 @@ function ProjectCard({ project }: { project: Project }) {
                 return (
                   <Box
                     key={src + idx}
-                    className="embla__slide shrink-0 relative bg-[var(--surface-muted)] rounded-lg overflow-hidden !max-h-96"
+                    className="embla__slide shrink-0 relative bg-[var(--surface-muted)] rounded-lg overflow-hidden !max-h-60 sm:!max-h-96"
                     style={{ flex: "0 0 auto", width: "auto", maxWidth: "860px" }}
                     onClick={() => setLightboxIndex(idx)}
                     role="button"
@@ -172,7 +172,7 @@ function ProjectCard({ project }: { project: Project }) {
                       alt={`${project.title} visuel ${idx + 1}`}
                       width={1600}
                       height={1000}
-                      className="w-auto h-auto object-contain !max-h-96"
+                      className="w-auto h-auto object-contain !max-h-60 sm:!max-h-96"
                       sizes="(max-width: 768px) 100vw, 860px"
                       priority={idx === 0}
                     />
