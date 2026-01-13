@@ -5,6 +5,7 @@ import ThemeRegistry from "./ThemeRegistry";
 import TopBanner from "./components/TopBanner";
 import SiteHeader from "./components/SiteHeader";
 import Footer from "./components/Footer";
+import ClientErrorReporter from "./components/ClientErrorReporter";
 
 const heading = Barlow_Condensed({
   variable: "--font-heading",
@@ -37,6 +38,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${heading.variable} ${body.variable} antialiased`}>
         <ThemeRegistry>
+          <ClientErrorReporter />
           <TopBanner />
           <SiteHeader />
           {children}
