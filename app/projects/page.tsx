@@ -43,7 +43,7 @@ const sampleProjects = [
     title: "Enseigne drapeau",
     detail: "",
     images: ["/imgs/projects/enseigne-drapeaux/1.jpg", "/imgs/projects/enseigne-drapeaux/2.jpg", "/imgs/projects/enseigne-drapeaux/3.jpg",  
-      "/imgs/enseigne-drapeaux/enseigne/4.jpg", "/imgs/projects/enseigne-drapeaux/5.jpg", "/imgs/projects/enseigne-drapeaux/6.jpg", ]},
+      "/imgs/projects/enseigne-drapeaux/4.jpg", "/imgs/projects/enseigne-drapeaux/5.jpg", "/imgs/projects/enseigne-drapeaux/6.jpg", ]},
       {
     title: "Impression petit format",
     detail: "",
@@ -170,11 +170,10 @@ function ProjectCard({ project }: { project: Project }) {
                     <Image
                       src={src}
                       alt={`${project.title} visuel ${idx + 1}`}
-                      width={1600}
-                      height={1000}
+                      width={640}
+                      height={400}
                       className="w-auto h-auto object-contain !max-h-60 sm:!max-h-96"
-                      sizes="(max-width: 768px) 100vw, 860px"
-                      priority={idx === 0}
+                      sizes="(max-width: 768px) 80vw, 640px"
                     />
                   </Box>
                 );
